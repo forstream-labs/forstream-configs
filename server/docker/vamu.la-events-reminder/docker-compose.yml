@@ -1,0 +1,12 @@
+version: "3"
+services:
+  forstream:
+    image: "forstream-events-reminder:latest"
+    container_name: "forstream-events-reminder"
+    volumes:
+      - "${FORSTREAM_HOME}/configs/forstream-events-reminder.yml:/usr/src/forstream-events-reminder/configs.yml"
+      - "${FORSTREAM_HOME}/configs/firebase.json:/usr/src/forstream-events-reminder/firebase.json"
+networks:
+  default:
+    external:
+      name: "forstream"

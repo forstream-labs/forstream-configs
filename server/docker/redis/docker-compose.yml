@@ -1,0 +1,14 @@
+version: "3"
+services:
+  redis:
+    image: "redis:5.0.5-alpine"
+    container_name: "redis"
+    restart: "always"
+    volumes:
+      - "${FORSTREAM_HOME}/apps/forstream-configs/server/docker/redis/default.conf:/usr/local/etc/redis/redis.conf"
+      - "${FORSTREAM_HOME}/data/redis:/data"
+    command: "redis-server /usr/local/etc/redis/redis.conf"
+networks:
+  default:
+    external:
+      name: "forstream"

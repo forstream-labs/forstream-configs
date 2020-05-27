@@ -1,0 +1,14 @@
+version: "3"
+services:
+  mongo:
+    image: "mongo:4.0.10"
+    container_name: "mongo"
+    restart: "always"
+    volumes:
+      - "${FORSTREAM_HOME}/apps/forstream-configs/server/docker/mongo/default.conf:/usr/local/etc/mongo/mongod.conf"
+      - "${FORSTREAM_HOME}/data/mongo:/data/db"
+    command: "mongod --config /usr/local/etc/mongo/mongod.conf"
+networks:
+  default:
+    external:
+      name: "forstream"
