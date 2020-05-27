@@ -21,6 +21,7 @@ module "ec2" {
   source = "./ec2"
 
   environment = var.environment
+  region = var.region
 }
 
 module "route_53" {
