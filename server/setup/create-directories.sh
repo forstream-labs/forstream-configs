@@ -15,7 +15,7 @@ sudo mkdir $FORSTREAM_HOME/apps
 
 echo "$FORSTREAM_HOME/configs"
 sudo mkdir $FORSTREAM_HOME/configs
-touch ${FORSTREAM_HOME}/configs/forstream.yml
+sudo touch ${FORSTREAM_HOME}/configs/forstream.yml
 
 echo "$FORSTREAM_HOME/data"
 sudo mkdir $FORSTREAM_HOME/data
@@ -31,10 +31,9 @@ sudo mkdir $FORSTREAM_HOME/public
 
 echo "$USER_HOME/.backups"
 sudo mkdir $USER_HOME/.backups
-
-touch $USER_HOME/.backups/credentials
-chmod 700 $USER_HOME/.backups
-chmod 600 $USER_HOME/.backups/credentials
+sudo touch $USER_HOME/.backups/credentials
+sudo chmod 700 $USER_HOME/.backups
+sudo chmod 600 $USER_HOME/.backups/credentials
 
 echo ""
 echo "Directories created with success!"
