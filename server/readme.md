@@ -8,10 +8,10 @@ Create the required server directory structure:
 ````
 setup/create-directories.sh
 ````
-Move this project to "$FORSTREAM_HOME/apps" and set the folder owner as "forstream" user:
+Move this project to "/opt/forstream/apps" and set the folder owner of "/opt/forstream" as "forstream":
 ````
-mv forstream-configs $FORSTREAM_HOME/apps
-sudo chown -R forstream:forstream $FORSTREAM_HOME/apps/forstream-configs
+sudo mv forstream-configs /opt/forstream/apps
+sudo chown -R forstream:forstream /opt/forstream
 ````
 Enter with user "forstream":
 ````
@@ -23,9 +23,9 @@ setup/install-dependencies.sh
 setup/prepare-env.sh
 ````
 
-### Pulling Vamu.la images ###
+### Pulling Forstream images ###
 
-Vamu.la images are stored on Amazon ECR. To pull the images just run the following command:
+Forstream images are stored on Amazon ECR. To pull the images just run the following command:
 ````
 docker/pull-images.sh
 ````
@@ -47,8 +47,8 @@ docker/create-container.sh mongo
 // Please read "Redis Container" session before
 docker/create-container.sh redis
 
-// Please read "Vamu.la Container" session before
-docker/create-container.sh forstream/forstream
+// Please read "Forstream Container" session before
+docker/create-container.sh forstream
 ````
 
 ## Nginx Container ##
@@ -95,10 +95,10 @@ docker/redis/connect.sh
 
 ## Vamu.lá Container ##
 
-The project configuration file is exported as a Docker volume on $FORSTREAM_HOME/configs/forstream.yml.
+The project configuration file is exported as a Docker volume on /opt/forstream/configs/forstream.yml.
 This file must be created before running the container.
 
 ## Vamu.lá Web Container ##
 
-The project configuration file is exported as a Docker volume on $FORSTREAM_HOME/configs/forstream-web.yml.
+The project configuration file is exported as a Docker volume on /opt/forstream/configs/forstream-web.yml.
 This file must be created before running the container.
