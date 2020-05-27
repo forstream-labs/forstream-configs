@@ -10,7 +10,6 @@ sudo adduser $USER
 sudo usermod -aG sudo $USER
 sudo groupadd docker || true
 sudo usermod -aG docker $USER
-sudo mkdir /opt/$USER
 
 sudo chown $USER:$USER /opt/$USER
 
