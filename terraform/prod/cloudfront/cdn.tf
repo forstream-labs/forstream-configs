@@ -2,11 +2,11 @@ locals {
   origin_id = "forstream-public-s3-bucket"
 }
 
-resource "aws_cloudfront_origin_access_identity" "forstream_public_s3_bucket" {
+resource "aws_cloudfront_origin_access_identity" "forstream_cdn" {
   comment = "access-identity-${local.origin_id}"
 }
 
-resource "aws_cloudfront_distribution" "forstream_public_s3_bucket" {
+resource "aws_cloudfront_distribution" "forstream_cdn" {
   enabled = true
   is_ipv6_enabled = true
   aliases = [var.forstream_cdn_acm_certificate_domain_name]
@@ -16,7 +16,7 @@ resource "aws_cloudfront_distribution" "forstream_public_s3_bucket" {
     domain_name = var.forstream_public_s3_bucket_regional_domain_name
 
     s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.forstream_public_s3_bucket.cloudfront_access_identity_path
+      origin_access_identity = aws_cloudfront_origin_access_identity.forstream_cdn.cloudfront_access_identity_path
     }
   }
 
@@ -57,8 +57,8 @@ resource "aws_route53_record" "forstream_cdn_alias" {
   type = "A"
 
   alias {
-    name = aws_cloudfront_distribution.forstream_public_s3_bucket.domain_name
-    zone_id = aws_cloudfront_distribution.forstream_public_s3_bucket.hosted_zone_id
+    name = aws_cloudfront_distribution.forstream_cdn.domain_name
+    zone_id = aws_cloudfront_distribution.forstream_cdn.hosted_zone_id
     evaluate_target_health = false
   }
 }

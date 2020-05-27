@@ -22,6 +22,8 @@ module "ec2" {
 
   environment = var.environment
   region = var.region
+  forstream_route_53_zone_id = module.route_53.forstream_zone_id
+  forstream_route_53_zone_name = module.route_53.forstream_zone_name
 }
 
 module "ecr" {

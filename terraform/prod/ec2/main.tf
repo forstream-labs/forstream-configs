@@ -55,16 +55,6 @@ resource "aws_security_group" "forstream" {
   }
 }
 
-resource "aws_ebs_volume" "forstream" {
-  availability_zone = "${var.region}e"
-  size = 30
-
-  tags = {
-    Name = "forstream"
-    Environment = var.environment
-  }
-}
-
 resource "aws_instance" "forstream" {
   ami = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
@@ -72,14 +62,42 @@ resource "aws_instance" "forstream" {
   security_groups = [aws_security_group.forstream.name]
   key_name = "forstream"
 
+  root_block_device {
+    volume_size = 30
+    volume_type = "gp2"
+  }
+
+  volume_tags = {
+    Name = "forstream"
+    Environment = var.environment
+  }
+
   tags = {
     Name = "forstream"
     Environment = var.environment
   }
 }
 
-resource "aws_volume_attachment" "forstream" {
-  device_name = "/dev/xvdf"
-  volume_id = aws_ebs_volume.forstream.id
-  instance_id = aws_instance.forstream.id
+resource "aws_route53_record" "forstream_www_default" {
+  zone_id = var.forstream_route_53_zone_id
+  name = var.forstream_route_53_zone_name
+  type = "A"
+  ttl = 300
+  records = [aws_instance.forstream.public_ip]
+}
+
+resource "aws_route53_record" "forstream_www" {
+  zone_id = var.forstream_route_53_zone_id
+  name = "www.${var.forstream_route_53_zone_name}"
+  type = "A"
+  ttl = 300
+  records = [aws_instance.forstream.public_ip]
+}
+
+resource "aws_route53_record" "forstream_api" {
+  zone_id = var.forstream_route_53_zone_id
+  name = "api.${var.forstream_route_53_zone_name}"
+  type = "A"
+  ttl = 300
+  records = [aws_instance.forstream.public_ip]
 }

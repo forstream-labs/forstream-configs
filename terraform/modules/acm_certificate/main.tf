@@ -12,6 +12,11 @@ resource "aws_acm_certificate" "main" {
   }
 }
 
+resource "aws_acm_certificate_validation" "main" {
+  certificate_arn = aws_acm_certificate.main.arn
+  validation_record_fqdns = [for record in aws_route53_record.certificate_validation : record.fqdn]
+}
+
 resource "aws_route53_record" "certificate_validation" {
   count = length(aws_acm_certificate.main.subject_alternative_names) + 1
 
@@ -20,9 +25,4 @@ resource "aws_route53_record" "certificate_validation" {
   type = aws_acm_certificate.main.domain_validation_options[count.index].resource_record_type
   records = [aws_acm_certificate.main.domain_validation_options[count.index].resource_record_value]
   ttl = 300
-}
-
-resource "aws_acm_certificate_validation" "main" {
-  certificate_arn = aws_acm_certificate.main.arn
-  validation_record_fqdns = [for record in aws_route53_record.certificate_validation : record.fqdn]
 }

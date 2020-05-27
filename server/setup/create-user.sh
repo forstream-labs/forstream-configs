@@ -13,7 +13,7 @@ sudo usermod -aG docker $USER
 
 sudo chown $USER:$USER /opt/$USER
 
-FORSTREAM_ECR_REGISTRY="554511234717.dkr.ecr.us-east-1.amazonaws.com"
+FORSTREAM_ECR_REGISTRY="870961355790.dkr.ecr.us-east-1.amazonaws.com"
 FORSTREAM_ECR_REGION="us-east-1"
 
 echo "" | sudo tee --append /home/$USER/.profile > /dev/null

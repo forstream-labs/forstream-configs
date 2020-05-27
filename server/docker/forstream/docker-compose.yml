@@ -1,0 +1,12 @@
+version: "3"
+services:
+  forstream:
+    image: "forstream:latest"
+    container_name: "forstream"
+    volumes:
+      - "${FORSTREAM_HOME}/configs/forstream.yml:/usr/src/forstream/configs.yml"
+      - "${FORSTREAM_HOME}/public:/usr/src/forstream/public"
+networks:
+  default:
+    external:
+      name: "forstream"
