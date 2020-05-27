@@ -4,18 +4,18 @@ First you need to create an OS user called "forstream":
 ````
 setup/create-user.sh
 ````
-Enter with user "forstream":
-````
-su - forstream
-````
 Create the required server directory structure:
 ````
 setup/create-directories.sh
 ````
-Move this project to "$FORSTREAM_HOME/apps" and change set the owner as "forstream" user:
+Move this project to "$FORSTREAM_HOME/apps" and set the folder owner as "forstream" user:
 ````
 mv forstream-configs $FORSTREAM_HOME/apps
 sudo chown -R forstream:forstream $FORSTREAM_HOME/apps/forstream-configs
+````
+Enter with user "forstream":
+````
+su - forstream
 ````
 Execute the others scripts:
 ````

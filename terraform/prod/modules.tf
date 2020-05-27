@@ -24,6 +24,12 @@ module "ec2" {
   region = var.region
 }
 
+module "ecr" {
+  source = "./ecr"
+
+  environment = var.environment
+}
+
 module "route_53" {
   source = "./route_53"
 
