@@ -19,8 +19,10 @@ fi
 
 if [ $# != 1 ]; then
   echo "Usage: $0 <image_name>"
-  echo "Examples: $0 forstream/forstream"
-  echo "          $0 redis"
+  echo "Examples: $0 redis"
+  echo "          $0 mongo"
+  echo "          $0 nginx"
+  echo "          $0 forstream"
   exit 1
 fi
 

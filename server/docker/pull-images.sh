@@ -30,11 +30,5 @@ eval $(aws ecr get-login --no-include-email --region $FORSTREAM_ECR_REGION)
 docker pull $FORSTREAM_ECR_REGISTRY/forstream/forstream:latest
 docker tag $FORSTREAM_ECR_REGISTRY/forstream/forstream:latest forstream:latest
 
-docker pull $FORSTREAM_ECR_REGISTRY/forstream/forstream-web:latest
-docker tag $FORSTREAM_ECR_REGISTRY/forstream/forstream-web:latest forstream-web:latest
-
-docker pull $FORSTREAM_ECR_REGISTRY/forstream/forstream-events-reminder:latest
-docker tag $FORSTREAM_ECR_REGISTRY/forstream/forstream-events-reminder:latest forstream-events-reminder:latest
-
 echo ""
 echo "Images pulled with success!"
