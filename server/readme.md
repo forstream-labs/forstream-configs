@@ -55,7 +55,7 @@ docker/create-container.sh forstream
 
 ## Mongo Container ##
 
-### Opening the Shell ###
+### Opening Shell ###
 ````
 docker/mongo/connect.sh
 ````
@@ -64,10 +64,10 @@ docker/mongo/connect.sh
 
 #### Creating Administrator and User ####
 
-Don't forget to replace the password token by the user password.
+Don't forget to replace <password> by user password.
 ````
-use admin
-db.createUser({
+> use admin
+> db.createUser({
   user: "admin",
   pwd: "<password>",
   roles: [{
@@ -75,7 +75,7 @@ db.createUser({
       db: "admin"
   }]
 })
-db.createUser({
+> db.createUser({
   user: "forstream",
   pwd: "<password>",
   roles: [{
@@ -93,12 +93,7 @@ db.createUser({
 docker/redis/connect.sh
 ````
 
-## Vamu.lá Container ##
+## Forstream Container ##
 
 The project configuration file is exported as a Docker volume on /opt/forstream/configs/forstream.yml.
-This file must be created before running the container.
-
-## Vamu.lá Web Container ##
-
-The project configuration file is exported as a Docker volume on /opt/forstream/configs/forstream-web.yml.
 This file must be created before running the container.
