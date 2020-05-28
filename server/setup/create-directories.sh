@@ -36,7 +36,7 @@ sudo touch $USER_HOME/.backups/credentials
 sudo chmod 700 $USER_HOME/.backups
 sudo chmod 600 $USER_HOME/.backups/credentials
 
-sudo chown $USER:$USER /opt/$USER
+sudo chown -R $USER:$USER /opt/$USER
 
 echo ""
 echo "Directories created with success!"

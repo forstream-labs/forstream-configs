@@ -11,7 +11,7 @@ setup/create-directories.sh
 Move this project to "/opt/forstream/apps" and set the folder owner of "/opt/forstream" as "forstream":
 ````
 sudo mv forstream-configs /opt/forstream/apps
-sudo chown -R forstream:forstream /opt/forstream
+sudo chown -R forstream:forstream /opt/forstream/apps/forstream-configs
 ````
 Enter with user "forstream":
 ````
