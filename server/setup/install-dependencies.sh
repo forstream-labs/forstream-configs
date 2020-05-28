@@ -3,7 +3,7 @@
 set -e
 
 if [ "$(whoami)" != "forstream" ]; then
-  echo "This script must be executed with the user forstream"
+  echo "This script must be executed with user forstream"
   exit 1
 fi
 
@@ -40,4 +40,4 @@ $FORSTREAM_HOME/apps/forstream-configs/server/dependencies/install-letsencrypt.s
 
 echo ""
 echo "Dependencies installed with success!"
-echo "Please log out and log back in with the user $USER."
+echo "Please log out and log back in with user $USER."

@@ -3,7 +3,7 @@
 set -e
 
 if [ "$(whoami)" != "forstream" ]; then
-  echo "This script must be executed with the user forstream"
+  echo "This script must be executed with user forstream"
   exit 1
 fi
 
