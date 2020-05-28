@@ -1,23 +1,23 @@
 ## Server setup ##
 
-First you need to create an OS user called "forstream":
+1. First you need to create an OS user called "forstream":
 ````
 setup/create-user.sh
 ````
-Create the required server directory structure:
+2. Create the required server directory structure:
 ````
 setup/create-directories.sh
 ````
-Move this project to "/opt/forstream/apps" and set the folder owner of "/opt/forstream" as "forstream":
+3. Move this project to "/opt/forstream/apps" and set the folder owner of "/opt/forstream" as "forstream":
 ````
 sudo mv forstream-configs /opt/forstream/apps
 sudo chown -R forstream:forstream /opt/forstream/apps/forstream-configs
 ````
-Enter with user "forstream":
+4. Enter with user "forstream":
 ````
 su - forstream
 ````
-Execute the others scripts:
+5. Execute the others scripts:
 ````
 setup/install-dependencies.sh
 setup/prepare-env.sh
@@ -64,7 +64,8 @@ docker/mongo/connect.sh
 
 #### Creating Administrator and User ####
 
-Don't forget to replace <password> by user password.
+1. Edit default.conf and disable authorization
+2. Execute the following commands to create users. Don't forget to replace <password> by user password.
 ````
 > use admin
 > db.createUser({
@@ -84,6 +85,7 @@ Don't forget to replace <password> by user password.
   }]
 })
 ````
+3. Edit default.conf and enable authorization
 
 ## Redis Container ##
 
