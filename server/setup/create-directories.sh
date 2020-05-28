@@ -2,8 +2,9 @@
 
 set -e
 
-USER_HOME="/home/forstream"
-FORSTREAM_HOME=/opt/forstream
+USER="forstream"
+USER_HOME="/home/$USER"
+FORSTREAM_HOME=/opt/$USER
 
 echo "Creating directories..."
 echo ""
@@ -34,6 +35,8 @@ sudo mkdir $USER_HOME/.backups
 sudo touch $USER_HOME/.backups/credentials
 sudo chmod 700 $USER_HOME/.backups
 sudo chmod 600 $USER_HOME/.backups/credentials
+
+sudo chown $USER:$USER /opt/$USER
 
 echo ""
 echo "Directories created with success!"

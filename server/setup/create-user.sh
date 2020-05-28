@@ -11,8 +11,6 @@ sudo usermod -aG sudo $USER
 sudo groupadd docker || true
 sudo usermod -aG docker $USER
 
-sudo chown $USER:$USER /opt/$USER
-
 FORSTREAM_ECR_REGISTRY="870961355790.dkr.ecr.us-east-1.amazonaws.com"
 FORSTREAM_ECR_REGION="us-east-1"
 
