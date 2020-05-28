@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run --rm -it --network forstream redis:5.0.5-alpine redis-cli -h redis
+docker run --rm -it --network forstream redis:6.0.3-alpine redis-cli -h redis

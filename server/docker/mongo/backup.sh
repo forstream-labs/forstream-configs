@@ -29,7 +29,7 @@ FILENAME=mongo-$(date "+%Y%m%d%H%M%S").bkp
 USERNAME=forstream
 
 # Dump from Mongo and upload to S3
-docker run --rm --network forstream mongo:4.0.10 mongodump --host mongo --db $DATABASE --username $USERNAME --password $MONGO_PASSWORD --authenticationDatabase admin --gzip --archive | aws s3 cp - s3://$BUCKET/$FILENAME
+docker run --rm --network forstream mongo:4.2.7 mongodump --host mongo --db $DATABASE --username $USERNAME --password $MONGO_PASSWORD --authenticationDatabase admin --gzip --archive | aws s3 cp - s3://$BUCKET/$FILENAME
 
 echo ""
 echo "Backup generated and uploaded to S3 with success!"
