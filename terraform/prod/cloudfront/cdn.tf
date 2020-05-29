@@ -51,6 +51,28 @@ resource "aws_cloudfront_distribution" "forstream_cdn" {
   }
 }
 
+resource "aws_s3_bucket_policy" "forstream_cdn_read_access" {
+  bucket = var.forstream_public_s3_bucket_id
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "PolicyForCloudFrontPrivateContent",
+  "Statement": [
+    {
+      "Sid": "1",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "${aws_cloudfront_origin_access_identity.forstream_cdn.iam_arn}"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::${var.forstream_public_s3_bucket_name}/*"
+    }
+  ]
+}
+POLICY
+}
+
 resource "aws_route53_record" "forstream_cdn_alias" {
   zone_id = var.forstream_route_53_zone_id
   name = "cdn.${var.forstream_route_53_zone_name}"
