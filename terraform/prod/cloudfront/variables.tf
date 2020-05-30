@@ -22,7 +22,7 @@ variable "forstream_public_s3_bucket_id" {
   type = string
 }
 
-variable "forstream_public_s3_bucket_name" {
+variable "forstream_public_s3_bucket_arn" {
   type = string
 }
 

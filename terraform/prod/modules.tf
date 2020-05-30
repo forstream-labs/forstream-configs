@@ -15,7 +15,7 @@ module "cloudfront" {
   forstream_cdn_acm_certificate_arn = module.acm.forstream_cdn_certificate_arn
   forstream_cdn_acm_certificate_domain_name = module.acm.forstream_cdn_certificate_domain_name
   forstream_public_s3_bucket_id = module.s3.forstream_public_bucket_id
-  forstream_public_s3_bucket_name = module.s3.forstream_public_bucket_name
+  forstream_public_s3_bucket_arn = module.s3.forstream_public_bucket_arn
   forstream_public_s3_bucket_regional_domain_name = module.s3.forstream_public_bucket_regional_domain_name
 }
 

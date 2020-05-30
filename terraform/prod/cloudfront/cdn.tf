@@ -51,26 +51,22 @@ resource "aws_cloudfront_distribution" "forstream_cdn" {
   }
 }
 
+
+data "aws_iam_policy_document" "forstream_cdn_s3_policy" {
+  statement {
+    actions = ["s3:GetObject"]
+    resources = ["${var.forstream_public_s3_bucket_arn}/*"]
+
+    principals {
+      type = "AWS"
+      identifiers = [aws_cloudfront_origin_access_identity.forstream_cdn.iam_arn]
+    }
+  }
+}
+
 resource "aws_s3_bucket_policy" "forstream_cdn_read_access" {
   bucket = var.forstream_public_s3_bucket_id
-
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Id": "PolicyForCloudFrontPrivateContent",
-  "Statement": [
-    {
-      "Sid": "1",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "${aws_cloudfront_origin_access_identity.forstream_cdn.iam_arn}"
-      },
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${var.forstream_public_s3_bucket_name}/*"
-    }
-  ]
-}
-POLICY
+  policy = data.aws_iam_policy_document.forstream_cdn_s3_policy.json
 }
 
 resource "aws_route53_record" "forstream_cdn_alias" {
