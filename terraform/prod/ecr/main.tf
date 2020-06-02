@@ -5,3 +5,11 @@ resource "aws_ecr_repository" "forstream" {
     Environment = var.environment
   }
 }
+
+resource "aws_ecr_repository" "forstream_web" {
+  name = "forstream/forstream-web"
+
+  tags = {
+    Environment = var.environment
+  }
+}
