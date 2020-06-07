@@ -96,5 +96,5 @@ docker/redis/connect.sh
 
 ## Forstream Container ##
 
-The project configuration file is exported as a Docker volume on /opt/forstream/configs/forstream.yml.
-This file must be created before running the container.
+Configuration:
+- /opt/forstream/configs/forstream.yml
