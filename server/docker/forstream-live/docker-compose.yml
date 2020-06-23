@@ -5,7 +5,7 @@ services:
     container_name: "forstream-live"
     volumes:
       - "${FORSTREAM_HOME}/configs/forstream-live.yml:/usr/src/forstream-live/configs.yml"
-  ports:
+    ports:
       - "1935:1935"
 networks:
   default:
