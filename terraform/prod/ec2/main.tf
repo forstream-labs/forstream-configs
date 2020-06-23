@@ -42,6 +42,14 @@ resource "aws_security_group" "forstream" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description = "RTMP"
+    from_port = 1935
+    to_port = 1935
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port = 0
     to_port = 0
@@ -97,6 +105,14 @@ resource "aws_route53_record" "forstream_www" {
 resource "aws_route53_record" "forstream_api" {
   zone_id = var.forstream_route_53_zone_id
   name = "api.${var.forstream_route_53_zone_name}"
+  type = "A"
+  ttl = 300
+  records = [aws_instance.forstream.public_ip]
+}
+
+resource "aws_route53_record" "forstream_live" {
+  zone_id = var.forstream_route_53_zone_id
+  name = "live.${var.forstream_route_53_zone_name}"
   type = "A"
   ttl = 300
   records = [aws_instance.forstream.public_ip]
