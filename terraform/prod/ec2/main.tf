@@ -16,6 +16,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_security_group" "forstream" {
   name = "forstream"
+  description = "forstream"
 
   ingress {
     description = "HTTPS"
